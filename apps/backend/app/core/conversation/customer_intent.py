@@ -17,9 +17,12 @@ class CustomerIntent(Enum):
     """The possible intents behind a customer's message.
 
     These members mirror the "Customer Intent" section of the Decision
-    Engine architecture document.
+    Engine architecture document, extended with ``GREETING`` and
+    ``GOODBYE`` to support conversation-boundary detection (see
+    ``intent_detector.py``).
 
     Members:
+        GREETING: The customer is greeting/starting the conversation.
         QUESTION: The customer is asking a question.
         INTEREST: The customer is expressing interest.
         OBJECTION: The customer is raising an objection.
@@ -28,9 +31,11 @@ class CustomerIntent(Enum):
             presentation or documents).
         REQUEST_PRICE: The customer is asking about price.
         REQUEST_HUMAN: The customer is asking to be connected to a human.
+        GOODBYE: The customer is ending/closing the conversation.
         UNKNOWN: The intent could not be determined.
     """
 
+    GREETING = "greeting"
     QUESTION = "question"
     INTEREST = "interest"
     OBJECTION = "objection"
@@ -38,4 +43,5 @@ class CustomerIntent(Enum):
     REQUEST_MATERIALS = "request_materials"
     REQUEST_PRICE = "request_price"
     REQUEST_HUMAN = "request_human"
+    GOODBYE = "goodbye"
     UNKNOWN = "unknown"
